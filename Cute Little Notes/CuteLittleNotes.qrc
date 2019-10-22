@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/CuteLittleNotes">
+        <file>IconsBuiltIn/cute-little-notes-app-icon.ico</file>
+        <file>IconsBuiltIn/menu-icon-checkbox-is-checked-elephant.png</file>
+        <file>IconsBuiltIn/toolbar-icon-comment.png</file>
+        <file>IconsBuiltIn/toolbar-icon-list-title.png</file>
+        <file>IconsBuiltIn/toolbar-icon-mark-done.png</file>
+        <file>IconsBuiltIn/toolbar-icon-mark-scrapped.png</file>
+        <file>IconsBuiltIn/toolbar-icon-new.png</file>
+        <file>IconsBuiltIn/toolbar-icon-open.png</file>
+        <file>IconsBuiltIn/toolbar-icon-save.png</file>
+        <file>IconsBuiltIn/ThemeBabyBlue/menuIconCheckableIsChecked_themeBabyBlue.png</file>
+        <file>IconsBuiltIn/ThemeBabyBlue/toolbarButtonActionComment_themeBabyBlue.png</file>
+        <file>IconsBuiltIn/ThemeBabyBlue/toolbarButtonActionListTitle_themeBabyBlue.png</file>
+        <file>IconsBuiltIn/ThemeBabyBlue/toolbarButtonActionMarkDone_themeBabyBlue.png</file>
+        <file>IconsBuiltIn/ThemeBabyBlue/toolbarButtonActionMarkScrapped_themeBabyBlue.png</file>
+        <file>IconsBuiltIn/ThemeBabyBlue/toolbarButtonActionNew_themeBabyBlue.png</file>
+        <file>IconsBuiltIn/ThemeBabyBlue/toolbarButtonActionOpen_themeBabyBlue.png</file>
+        <file>IconsBuiltIn/ThemeBabyBlue/toolbarButtonActionSave_themeBabyBlue.png</file>
+        <file>IconsBuiltIn/themeCoffeeDark/menuIconCheckableIsChecked_themeCoffeeDark.png</file>
+        <file>IconsBuiltIn/themeCoffeeDark/toolbarButtonActionComment_themeCoffeeDark.png</file>
+        <file>IconsBuiltIn/themeCoffeeDark/toolbarButtonActionListTitle_themeCoffeeDark.png</file>
+        <file>IconsBuiltIn/themeCoffeeDark/toolbarButtonActionMarkDone_themeCoffeeDark.png</file>
+        <file>IconsBuiltIn/themeCoffeeDark/toolbarButtonActionMarkScrapped_themeCoffeeDark.png</file>
+        <file>IconsBuiltIn/themeCoffeeDark/toolbarButtonActionNew_themeCoffeeDark.png</file>
+        <file>IconsBuiltIn/themeCoffeeDark/toolbarButtonActionOpen_themeCoffeeDark.png</file>
+        <file>IconsBuiltIn/themeCoffeeDark/toolbarButtonActionSave_themeCoffeeDark.png</file>
+        <file>IconsBuiltIn/ThemeGray/menu-icon-checkbox-is-checked-elephant-theme-gray.png</file>
+        <file>IconsBuiltIn/ThemeGray/toolbar-icon-comment-theme-gray.png</file>
+        <file>IconsBuiltIn/ThemeGray/toolbar-icon-list-title-theme-gray.png</file>
+        <file>IconsBuiltIn/ThemeGray/toolbar-icon-mark-done-theme-gray.png</file>
+        <file>IconsBuiltIn/ThemeGray/toolbar-icon-mark-scrapped-theme-gray.png</file>
+        <file>IconsBuiltIn/ThemeGray/toolbar-icon-new-theme-gray.png</file>
+        <file>IconsBuiltIn/ThemeGray/toolbar-icon-open-theme-gray.png</file>
+        <file>IconsBuiltIn/ThemeGray/toolbar-icon-save-theme-gray.png</file>
+    </qresource>
+</RCC>
