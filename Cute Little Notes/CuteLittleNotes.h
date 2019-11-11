@@ -35,6 +35,7 @@ private:
 	QColor colorJotMarkDoneText = QColor(0, 0, 0, 255);
 	QColor colorJotMarkScrappedBg = QColor(214, 136, 126, 255);
 	QColor colorJotMarkScrappedText = QColor(0, 0, 0, 255);
+	const enum class JotPrefType { COLOR, TEXT };
 
 	QString fileCurrent = "";
 	QString fileDirLastOpened = appExecutablePath;
@@ -346,6 +347,9 @@ private:
 		{jotOverrideNamesList[8], JotNameEnums::MARK_SCRAPPED_BG_COL},
 		{jotOverrideNamesList[9], JotNameEnums::MARK_SCRAPPED_TXT_COL},
 	};
+
+	void applyExistingJotPrefsAll();
+	std::string applyExistingJotPrefs(const std::string strBegin, const std::string strEnd, const std::string &textEditContents, const QStringList replacements, JotPrefType prefType);
 
 private slots:
 	void statusBarInit();

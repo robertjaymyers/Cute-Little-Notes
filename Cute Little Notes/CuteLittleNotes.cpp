@@ -147,6 +147,8 @@ CuteLittleNotes::CuteLittleNotes(QWidget *parent)
 
 	prefSetThemeLoadCurrentTheme();
 
+	ui.textEdit->document()->setDefaultStyleSheet("a{text-decoration:none;}");
+
 	ui.actionNew->setShortcut(Qt::Key_N | Qt::ControlModifier);
 	ui.actionOpen->setShortcut(Qt::Key_O | Qt::ControlModifier);
 	ui.actionSave->setShortcut(Qt::Key_S | Qt::ControlModifier);
@@ -346,6 +348,7 @@ void CuteLittleNotes::fileOpen()
 			fileSetCurrent(filename);
 			statusBar()->showMessage(tr("File loaded"), 2000);
 			fileDirLastOpened = QFileInfo(filename).path();
+			applyExistingJotPrefsAll();
 		}
 	}
 
@@ -522,9 +525,9 @@ void CuteLittleNotes::jotComment()
 		ui.textEdit->insertPlainText(" ");
 		ui.textEdit->insertHtml
 		(
-			"<span style=\"background-color:" + colorJotCommentBg.name() +
+			"<a href=\"colorJotComment\"><span style=\"background-color:" + colorJotCommentBg.name() +
 			"; color:" + colorJotCommentText.name() +
-			";\">[" + strToAdd + "]</span> "
+			";\">[" + strToAdd + "]</span></a> "
 		);
 		cursor.endEditBlock();
 		//cursor.beginEditBlock();
@@ -551,9 +554,9 @@ void CuteLittleNotes::jotListTitle()
 		cursor.beginEditBlock();
 		ui.textEdit->insertHtml
 		(
-			"<h2><span style=\"background-color:" + colorJotListTitleBg.name() + 
+			"<a href=\"colorJotListTitle\"><h2><span style=\"background-color:" + colorJotListTitleBg.name() + 
 			"; color:" + colorJotListTitleText.name() +
-			"; font-weight: bold; text-transform: uppercase;\">" + strToAdd + "</span></h2><br />"
+			"; font-weight: bold; text-transform: uppercase;\">" + strToAdd + "</span></h2></a><br />"
 		);
 		cursor.endEditBlock();
 	}
@@ -566,9 +569,9 @@ void CuteLittleNotes::jotMarkDone()
 	ui.textEdit->insertPlainText(" ");
 	ui.textEdit->insertHtml
 	(
-		"<span style=\"background-color:" + colorJotMarkDoneBg.name() +
+		"<a href=\"jotMarkDone\"><span style=\"background-color:" + colorJotMarkDoneBg.name() +
 		"; color:" + colorJotMarkDoneText.name() +
-		";\">" + textJotMarkDone + "</span> "
+		";\">" + textJotMarkDone + "</span></a> "
 	);
 	cursor.endEditBlock();
 }
@@ -580,9 +583,9 @@ void CuteLittleNotes::jotMarkScrapped()
 	ui.textEdit->insertPlainText(" ");
 	ui.textEdit->insertHtml
 	(
-		"<span style=\"background-color:" + colorJotMarkScrappedBg.name() +
+		"<a href=\"jotMarkScrapped\"><span style=\"background-color:" + colorJotMarkScrappedBg.name() +
 		"; color:" + colorJotMarkScrappedText.name() +
-		";\">" + textJotMarkScrapped + "</span> "
+		";\">" + textJotMarkScrapped + "</span></a> "
 	);
 	cursor.endEditBlock();
 }
@@ -707,6 +710,7 @@ void CuteLittleNotes::prefSetThemeOverride()
 				themePackages_themesList[themeCurrentName].overrideColorJotMarkScrappedText = colorJotMarkScrappedText;
 			break;
 		}
+		applyExistingJotPrefsAll();
 	}
 }
 
@@ -854,6 +858,8 @@ void CuteLittleNotes::prefSetThemeLoadCurrentTheme()
 	else
 		colorJotMarkScrappedText = themePackages_themesList[themeCurrentName].overrideColorJotMarkScrappedText;
 
+	applyExistingJotPrefsAll();
+
 	/*QString textEditContents = ui.textEdit->toHtml();
 	qDebug() << textEditContents;
 	textEditContents.replace("background-color:" + tempPrevColorJotCommentBg.name(), "background-color:" + colorJotCommentBg.name());
@@ -878,6 +884,65 @@ void CuteLittleNotes::prefSetThemeLoadCurrentTheme()
 	colorJotMarkDoneText = themePackages_themesList[themeCurrent].colorJotMarkDoneText;
 	colorJotMarkScrappedBg = themePackages_themesList[themeCurrent].colorJotMarkScrappedBg;
 	colorJotMarkScrappedText = themePackages_themesList[themeCurrent].colorJotMarkScrappedText;*/
+}
+
+void CuteLittleNotes::applyExistingJotPrefsAll()
+{
+	std::string textEditContents = ui.textEdit->toHtml().toStdString();
+
+	textEditContents = applyExistingJotPrefs("<a href=\"colorJotComment\">", ";", textEditContents, { colorJotCommentText.name(), colorJotCommentBg.name() }, JotPrefType::COLOR);
+	textEditContents = applyExistingJotPrefs("<a href=\"colorJotListTitle\">", ";", textEditContents, { colorJotListTitleText.name(), colorJotListTitleBg.name() }, JotPrefType::COLOR);
+	textEditContents = applyExistingJotPrefs("<a href=\"jotMarkDone\">", ";", textEditContents, { colorJotMarkDoneText.name(), colorJotMarkDoneBg.name() }, JotPrefType::COLOR);
+	textEditContents = applyExistingJotPrefs("<a href=\"jotMarkScrapped\">", ";", textEditContents, { colorJotMarkScrappedText.name(), colorJotMarkScrappedBg.name() }, JotPrefType::COLOR);
+	textEditContents = applyExistingJotPrefs("<a href=\"jotMarkDone\">", ";", textEditContents, { textJotMarkDone }, JotPrefType::TEXT);
+	textEditContents = applyExistingJotPrefs("<a href=\"jotMarkScrapped\">", ";", textEditContents, { textJotMarkScrapped }, JotPrefType::TEXT);
+
+	ui.textEdit->clear();
+	ui.textEdit->insertHtml(QString::fromStdString(textEditContents));
+	qDebug() << QString::fromStdString(textEditContents);
+}
+
+std::string CuteLittleNotes::applyExistingJotPrefs(const std::string strBegin, const std::string strEnd, const std::string &textEditContents, const QStringList replacements, JotPrefType prefType)
+{
+	std::string textEditContentsEdited = textEditContents;
+	int posFound = 0;
+	if (prefType == JotPrefType::COLOR)
+	{
+		const std::string colorTextStyleId = " color:";
+		const std::string colorBgStyleId = " background-color:";
+		while (textEditContentsEdited.find(strBegin, posFound) != std::string::npos)
+		{
+			posFound = textEditContentsEdited.find(strBegin, posFound);
+
+			int posBeginColorText = textEditContentsEdited.find(colorTextStyleId, posFound) + colorTextStyleId.length();
+			int posEndColorText = textEditContentsEdited.find(strEnd, posBeginColorText) + 1 - strEnd.length();
+			textEditContentsEdited.replace(posBeginColorText, posEndColorText - posBeginColorText, replacements[0].toStdString());
+
+			int posBeginColorBg = textEditContentsEdited.find(colorBgStyleId, posFound) + colorBgStyleId.length();
+			int posEndColorBg = textEditContentsEdited.find(strEnd, posBeginColorBg) + 1 - strEnd.length();
+			textEditContentsEdited.replace(posBeginColorBg, posEndColorBg - posBeginColorBg, replacements[1].toStdString());
+
+			posFound = posEndColorBg;
+		}
+	}
+	else if (prefType == JotPrefType::TEXT)
+	{
+		const std::string spanId = "<span";
+		const std::string bracketBeginId = ">";
+		const std::string bracketEndId = "<";
+		while (textEditContentsEdited.find(strBegin, posFound) != std::string::npos)
+		{
+			posFound = textEditContentsEdited.find(strBegin, posFound);
+
+			int posSpanId = textEditContentsEdited.find(spanId, posFound) + spanId.length();
+			int posBegin = textEditContentsEdited.find(bracketBeginId, posSpanId) + bracketBeginId.length();
+			int posEnd = textEditContentsEdited.find(bracketEndId, posBegin) + 1 - bracketEndId.length();
+			textEditContentsEdited.replace(posBegin, posEnd - posBegin, replacements[0].toStdString());
+
+			posFound = posEnd;
+		}
+	}
+	return textEditContentsEdited;
 }
 
 //void CuteLittleNotes::prefSetThemeIcons(std::map<ThemeIconsKey, QString> &themeIconsMap)
