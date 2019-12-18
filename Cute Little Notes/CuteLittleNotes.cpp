@@ -22,6 +22,8 @@ CuteLittleNotes::CuteLittleNotes(QWidget *parent)
 {
 	ui.setupUi(this);
 
+	ui.textEdit->document()->setDefaultStyleSheet("a{text-decoration:none;}");
+
 	//this->setStyleSheet("QWidget{ background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); }");
 
 	qDebug() << appExecutablePath;
@@ -146,8 +148,6 @@ CuteLittleNotes::CuteLittleNotes(QWidget *parent)
 	}
 
 	prefSetThemeLoadCurrentTheme();
-
-	ui.textEdit->document()->setDefaultStyleSheet("a{text-decoration:none;}");
 
 	ui.actionNew->setShortcut(Qt::Key_N | Qt::ControlModifier);
 	ui.actionOpen->setShortcut(Qt::Key_O | Qt::ControlModifier);
