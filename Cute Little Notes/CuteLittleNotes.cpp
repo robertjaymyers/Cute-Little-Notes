@@ -149,6 +149,9 @@ CuteLittleNotes::CuteLittleNotes(QWidget *parent)
 
 	prefSetThemeLoadCurrentTheme();
 
+	ui.textEdit->document()->setModified(false);
+	setWindowModified(false);
+
 	ui.actionNew->setShortcut(Qt::Key_N | Qt::ControlModifier);
 	ui.actionOpen->setShortcut(Qt::Key_O | Qt::ControlModifier);
 	ui.actionSave->setShortcut(Qt::Key_S | Qt::ControlModifier);
@@ -345,10 +348,10 @@ void CuteLittleNotes::fileOpen()
 
 			ui.textEdit->clear();
 			ui.textEdit->insertHtml(QString::fromStdString(fileContents));
+			applyExistingJotPrefsAll();
 			fileSetCurrent(filename);
 			statusBar()->showMessage(tr("File loaded"), 2000);
 			fileDirLastOpened = QFileInfo(filename).path();
-			applyExistingJotPrefsAll();
 		}
 	}
 
