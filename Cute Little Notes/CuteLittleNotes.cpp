@@ -38,8 +38,6 @@ CuteLittleNotes::CuteLittleNotes(QWidget *parent)
 
 	ui.textEdit->document()->setDefaultStyleSheet("a{text-decoration:none;}");
 
-	//this->setStyleSheet("QWidget{ background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); }");
-
 	qDebug() << appExecutablePath;
 
 	ui.mainToolBar->setContextMenuPolicy(Qt::PreventContextMenu);
@@ -59,36 +57,6 @@ CuteLittleNotes::CuteLittleNotes(QWidget *parent)
 	ui.mainToolBar->widgetForAction(ui.actionListTitle)->setObjectName("toolbarButtonActionListTitle");
 	ui.mainToolBar->widgetForAction(ui.actionMarkDone)->setObjectName("toolbarButtonActionMarkDone");
 	ui.mainToolBar->widgetForAction(ui.actionMarkScrapped)->setObjectName("toolbarButtonActionMarkScrapped");
-
-	/*const QString defaultStyleSheet =
-		"QTextEdit{  border-color: #F2F2F2;  border-style: inset;  border-width: 1px;  background-color: #FFFFFF;  color: #000000;}"
-		"QScrollBar{  background-color: #F0F0F0;}"
-		"QToolBar{  background-color: #F0F0F0;  border-width: 1px 0px 1px 1px;  border-style: outset;  border-color: #B9B9B9;}"
-		"QToolBar::separator{  background-color: #D3D3D3;  width: 1px;  height: 1px;  margin: 3px 3px 3px 2px;}"
-		"QToolButton:hover{  background-color: #FFB4FF;  border-width: 1px;  border-style: solid;}"
-		"QToolButton:hover{  border-color: #000000;}"
-		"QToolButton#toolbarButtonActionNew{  qproperty-icon: url(:/CuteLittleNotes/Icon-Making/toolbar-icon-new.png);}"
-		"QToolButton#toolbarButtonActionOpen{  qproperty-icon: url(:/CuteLittleNotes/Icon-Making/toolbar-icon-open.png);}"
-		"QToolButton#toolbarButtonActionSave{  qproperty-icon: url(:/CuteLittleNotes/Icon-Making/toolbar-icon-save.png);}"
-		"QToolButton#toolbarButtonActionComment{  qproperty-icon: url(:/CuteLittleNotes/Icon-Making/toolbar-icon-comment.png);}"
-		"QToolButton#toolbarButtonActionListTitle{  qproperty-icon: url(:/CuteLittleNotes/Icon-Making/toolbar-icon-list-title.png);}"
-		"QToolButton#toolbarButtonActionMarkDone{  qproperty-icon: url(:/CuteLittleNotes/Icon-Making/toolbar-icon-mark-done.png);}"
-		"QToolButton#toolbarButtonActionMarkScrapped{  qproperty-icon: url(:/CuteLittleNotes/Icon-Making/toolbar-icon-mark-scrapped.png);}"
-		"QMenuBar{  background-color: #FFFFFF;  color: #000000;  border-bottom-width: 1px;  border-bottom-style: solid;  border-color: #F2F2F2;}"
-		"QMenuBar::item:selected{  background-color: #FFB4FF;  border-width: 1px;  border-style: solid;}"
-		"QMenuBar::item:selected{  color: #000000;}"
-		"QMenuBar::item:selected{  border-color: #000000;}"
-		"QMenu{  background-color: #F0F0F0;  color: #000000;  border-color: #CCCCCC;  border-width: 1px;  border-style: solid;}"
-		"QMenu::separator{  background-color: #D7D7D7;  width: 1px;  height: 1px;  margin: 3px 0px 3px 12px;}"
-		"QMenu::item{  background-color: #F0F0F0;  margin: 2px;  padding: 2px 20px 2px 40px;  border: 1px solid transparent;}"
-		"QMenu::item:selected{  background-color: #FFB4FF;}"
-		"QMenu::item:selected{  color: #000000;}"
-		"QMenu::indicator:non-exclusive:checked{  image: url(:/CuteLittleNotes/Icon-Making/menu-icon-checkbox-is-checked-elephant.png);}"
-		"QMenu::indicator:non-exclusive:checked{  background-color: #FFB4FF;}"
-		"QStatusBar{  background-color: #FFFFFF;  color: #000000;}"
-		;
-
-	this->setStyleSheet(defaultStyleSheet);*/
 
 	setWindowTitle(winTitleUntitled + winTitlePlaceholder + " - " + winTitleProgramName);
 	statusBarInit();
@@ -203,7 +171,7 @@ CuteLittleNotes::CuteLittleNotes(QWidget *parent)
 
 	connect(ui.actionWordWrap, SIGNAL(triggered()), this, SLOT(toggleWordWrapMode()));
 	
-	//// ZOOM CODE
+	//// ZOOM CODE -- NOT USED
 	/*ui.actionZoomIn->setShortcut(Qt::Key_Equal | Qt::ControlModifier);
 	ui.actionZoomOut->setShortcut(Qt::Key_Minus | Qt::ControlModifier);
 	ui.actionZoomReset->setShortcut(Qt::Key_Slash | Qt::ControlModifier);*/
@@ -258,30 +226,6 @@ CuteLittleNotes::CuteLittleNotes(QWidget *parent)
 	ui.actionPastePlainText->setShortcut(Qt::Key_V | Qt::ControlModifier | Qt::ShiftModifier);
 
 	// Menu - Preferences
-	/*connect(ui.actionPrefCommentSetColor, &QAction::triggered, this, [=]() {
-		prefSetColor(colorJotCommentBg);
-	});
-	connect(ui.actionPrefCommentSetColor, &QAction::triggered, this, [=]() {
-		prefSetColor(colorJotCommentText);
-	});
-	connect(ui.actionPrefListTitleSetColorBg, &QAction::triggered, this, [=]() {
-		prefSetColor(colorJotListTitleBg);
-	});
-	connect(ui.actionPrefListTitleSetColorText, &QAction::triggered, this, [=]() {
-		prefSetColor(colorJotListTitleText);
-	});
-	connect(ui.actionPrefMarkDoneSetColor, &QAction::triggered, this, [=]() {
-		prefSetColor(colorJotMarkDone);
-	});
-	connect(ui.actionPrefMarkDoneSetText, &QAction::triggered, this, [=]() {
-		prefSetText(textJotMarkDone);
-	});
-	connect(ui.actionPrefMarkScrappedSetColor, &QAction::triggered, this, [=]() {
-		prefSetColor(colorJotMarkScrapped);
-	});
-	connect(ui.actionPrefMarkScrappedSetText, &QAction::triggered, this, [=]() {
-		prefSetText(textJotMarkScrapped);
-	});*/
 	connect(ui.actionPrefSetJotOverrides, &QAction::triggered, this, &CuteLittleNotes::prefSetThemeOverride);
 	connect(ui.actionPrefDisableOverrides, &QAction::triggered, this, &CuteLittleNotes::prefSetThemeLoadCurrentTheme);
 	connect(ui.actionPrefSetTheme, &QAction::triggered, this, &CuteLittleNotes::prefSetTheme);
@@ -320,7 +264,6 @@ void CuteLittleNotes::fileSetCurrent(const QString &filename)
 	ui.textEdit->document()->setModified(false);
 	setWindowModified(false);
 
-	//QString displayName = fileCurrent;
 	QString displayName;
 	if (fileCurrent.isEmpty())
 	{
@@ -331,7 +274,6 @@ void CuteLittleNotes::fileSetCurrent(const QString &filename)
 		displayName = QFileInfo(fileCurrent).fileName();
 	}
 	setWindowTitle(displayName + winTitlePlaceholder + " - " + winTitleProgramName);
-	//setWindowFilePath(displayName + " - " + windowTitleStr);
 }
 
 void CuteLittleNotes::fileNew()
@@ -347,7 +289,6 @@ void CuteLittleNotes::fileOpen()
 {
 	if (fileSaveModifCheck())
 	{
-		//QString filename = QFileDialog::getOpenFileName(this, tr("Open"), fileDirLastOpened, tr("Cute Little Notes (*.cutelittlenote);;AllFiles (*)"));
 		QString filename = QFileDialog::getOpenFileName(this, tr("Open"), fileDirLastOpened, tr("Text Files (*.cutelittlenote *.txt);;AllFiles (*)"));
 		if (!filename.isEmpty())
 		{
@@ -368,25 +309,6 @@ void CuteLittleNotes::fileOpen()
 			fileDirLastOpened = QFileInfo(filename).path();
 		}
 	}
-
-	////QString filename = QFileDialog::getOpenFileName(this, tr("Open"), "Notes", tr("Text Document (*.txt);;AllFiles (*)"));
-	//QString filename = QFileDialog::getOpenFileName(this, tr("Open"), "Notes", tr("Cute Little Notes (*.cutelittlenote);;AllFiles (*)"));
-	//std::string fileContents = "";
-
-	//if (!filename.isEmpty())
-	//{
-	//	std::string line;
-	//	std::ifstream fileRead(filename.toStdString());
-	//	while (std::getline(fileRead, line))
-	//	{
-	//		fileContents += line;
-	//	}
-	//	fileRead.close();
-
-	//	ui.textEdit->clear();
-	//	ui.textEdit->insertHtml(QString::fromStdString(fileContents));
-	//	//fileContentsMostRecentlySaved = QString::fromStdString(fileContents);
-	//}
 }
 
 bool CuteLittleNotes::fileSaveModifCheck()
@@ -441,27 +363,6 @@ bool CuteLittleNotes::fileSave(const QString &filename)
 	statusBar()->showMessage(tr("File saved"), 2000);
 	fileDirLastSaved = QFileInfo(filename).path();
 	return true;
-
-	//if (filenameLastSaved.isEmpty())
-	//{
-	//	fileSaveAs();
-	//}
-	//else
-	//{
-	//	QString textEditContents = ui.textEdit->toHtml();
-	//	std::string textEditContentsAsStdStr = textEditContents.toStdString();
-
-	//	std::ofstream fileWrite(filenameLastSaved.toStdString());
-	//	if (fileWrite.is_open())
-	//	{
-	//		fileWrite << textEditContentsAsStdStr;
-	//	}
-	//	fileWrite.close();
-
-	//	//fileContentsMostRecentlySaved = QString::fromStdString(textEditContentsAsStdStr);
-
-	//	QMessageBox::information(this, "Save Log To File", "Copied log contents to " + filenameLastSaved);
-	//}
 }
 
 bool CuteLittleNotes::fileSaveAs()
@@ -472,41 +373,6 @@ bool CuteLittleNotes::fileSaveAs()
 	if (dialog.exec() != QFileDialog::Accepted)
 		return false;
 	return fileSave(dialog.selectedFiles().first());
-
-	////QString filename = QFileDialog::getSaveFileName(this, tr("Save As"), "Notes/MyNotes.txt", tr("Text Document (*.txt);;AllFiles (*)"));
-	//QString filename = QFileDialog::getSaveFileName(this, tr("Save As"), "Notes/MyNotes.cutelittlenote", tr("Cute Little Notes (*.cutelittlenote);;AllFiles (*)"));
-
-	//if (!filename.isEmpty())
-	//{
-	//	QString textEditContents = ui.textEdit->toHtml();
-	//	std::string textEditContentsAsStdStr = textEditContents.toStdString();
-	//	
-	//	std::ofstream fileWrite(filename.toStdString());
-	//	if (fileWrite.is_open())
-	//	{
-	//		fileWrite << textEditContentsAsStdStr;
-	//	}
-	//	fileWrite.close();
-
-	//	filenameLastSaved = filename;
-	//	//fileContentsMostRecentlySaved = QString::fromStdString(textEditContentsAsStdStr);
-
-	//	QMessageBox::information(this, "Save Log To File", "Copied log contents to " + filename);
-	//	
-	//	/*QFile fileWrite(filename);
-	//	if (!fileWrite.open(QIODevice::WriteOnly | QIODevice::Text))
-	//		return;
-
-	//	QTextStream out(&filename);
-	//	out << ui.textEdit->toPlainText();
-
-	//	fileWrite.close();*/
-
-	//	/*else
-	//	{
-	//		QMessageBox::warning(this, "Save Log To File", "Copy failed, nothing was found in the log to copy to file.");
-	//	}*/
-	//}
 }
 
 void CuteLittleNotes::fileSaveAsPlainText()
@@ -547,16 +413,6 @@ void CuteLittleNotes::jotComment()
 			";\">[" + strToAdd + "]</span></a> "
 		);
 		cursor.endEditBlock();
-		//cursor.beginEditBlock();
-		//ui.textEdit->insertPlainText(" ");
-		////ui.textEdit->setTextBackgroundColor(QColor(219, 219, 219, 255));
-		//ui.textEdit->setTextBackgroundColor(colorJotComment);
-		////ui.textEdit->insertHtml("<comment><span style=\"background-color:" + colorJotComment.name() + "\">[" + commentToAdd + "]</span></comment>");
-		//ui.textEdit->insertPlainText("[" + commentToAdd + "]");
-		//ui.textEdit->setTextBackgroundColor(Qt::white);
-		//ui.textEdit->insertPlainText(" ");
-		//cursor.endEditBlock();
-		////commentsList.append(commentToAdd);
 	}
 }
 
@@ -652,8 +508,6 @@ void CuteLittleNotes::stripFormattingFromSelectedText()
 	cursor.removeSelectedText();
 	selectedTxt.remove(QRegExp("<[^>]*>"));
 	ui.textEdit->textCursor().insertText(selectedTxt);
-	//ui.textEdit->setTextCursor();
-	//cursor.selectedText() = cursor.selection().toPlainText();
 	cursor.endEditBlock();
 }
 
@@ -663,8 +517,6 @@ void CuteLittleNotes::pasteStripFormatting()
 	QTextCursor cursor(ui.textEdit->textCursor());
 	cursor.beginEditBlock();
 	ui.textEdit->setPlainText(selectedTxt);
-	/*cursor.removeSelectedText();
-	selectedTxt.remove(QRegExp("<[^>]*>"));*/
 	ui.textEdit->textCursor().insertText(selectedTxt);
 	cursor.endEditBlock();
 }
@@ -731,15 +583,6 @@ void CuteLittleNotes::prefSetThemeOverride()
 	}
 }
 
-//void CuteLittleNotes::prefSetColor(QColor &color)
-//{
-//	QColor colorEdited = QColorDialog::getColor(color, this, "Choose Color");
-//	if (colorEdited.isValid())
-//	{
-//		color = colorEdited;
-//	}
-//}
-
 bool CuteLittleNotes::prefSetOverrideColor(QColor &color, const QString colorValName)
 {
 	QColor colorEdited = QColorDialog::getColor(color, this, "Choose Color");
@@ -748,12 +591,6 @@ bool CuteLittleNotes::prefSetOverrideColor(QColor &color, const QString colorVal
 		color = colorEdited;
 		jotOverrideWasUsed = true;
 		themePackages_themesList[themeCurrentName].overridesAreEmpty = false;
-		/*QSettings settings(appExecutablePath + "/ThemeOverrides/" + themeCurrentName + ".ini", QSettings::IniFormat);
-		settings.beginGroup("ThemeJotOverrides");
-		settings.setValue(colorValName, color.name());
-		settings.endGroup();
-		if (!settings.isWritable())
-			qDebug() << "Couldn't save override to file due to permissions.";*/
 		return true;
 	}
 	return false;
@@ -768,24 +605,10 @@ bool CuteLittleNotes::prefSetOverrideText(QString &text, const QString textValNa
 		text = textEdited;
 		jotOverrideWasUsed = true;
 		themePackages_themesList[themeCurrentName].overridesAreEmpty = false;
-		/*QSettings settings(appExecutablePath + "/ThemeOverrides/" + themeCurrentName + ".ini", QSettings::IniFormat);
-		settings.beginGroup("ThemeJotOverrides");
-		settings.setValue(textValName, text);
-		settings.endGroup();
-		if (!settings.isWritable())
-			qDebug() << "Couldn't save override to file due to permissions.";*/
 		return true;
 	}
 	return false;
 }
-
-//void CuteLittleNotes::prefSetText(QString &text)
-//{
-//	bool ok;
-//	QString textEdited = QInputDialog::getText(this, tr("Set Text"), tr("Text:"), QLineEdit::Normal, text, &ok, Qt::WindowTitleHint | Qt::WindowCloseButtonHint | Qt::MSWindowsFixedSizeDialogHint);
-//	if (ok && !textEdited.isEmpty())
-//		text = textEdited;
-//}
 
 void CuteLittleNotes::prefSetTheme()
 {
@@ -795,23 +618,11 @@ void CuteLittleNotes::prefSetTheme()
 	{
 		themeCurrentName = theme;
 		prefSetThemeLoadCurrentTheme();
-		//prefSetThemeIcons(themeIconsMap_themesList[themeCurrent]);
 	}
 }
 
 void CuteLittleNotes::prefSetThemeLoadCurrentTheme()
 {
-	/*tempPrevTextJotMarkDone = textJotMarkDone;
-	tempPrevTextJotMarkScrapped = textJotMarkScrapped;
-	tempPrevColorJotCommentBg = colorJotCommentBg;
-	tempPrevColorJotCommentText = colorJotCommentText;
-	tempPrevColorJotListTitleBg = colorJotListTitleBg;
-	tempPrevColorJotListTitleText = colorJotListTitleText;
-	tempPrevColorJotMarkDoneBg = colorJotMarkDoneBg;
-	tempPrevColorJotMarkDoneText = colorJotMarkDoneText;
-	tempPrevColorJotMarkScrappedBg = colorJotMarkScrappedBg;
-	tempPrevColorJotMarkScrappedText = colorJotMarkScrappedText;*/
-
 	themeCurrentIndex = themeNamesList.indexOf(themeCurrentName);
 	this->setStyleSheet(themePackages_themesList[themeCurrentName].themeStylesheet);
 	
@@ -876,31 +687,6 @@ void CuteLittleNotes::prefSetThemeLoadCurrentTheme()
 		colorJotMarkScrappedText = themePackages_themesList[themeCurrentName].overrideColorJotMarkScrappedText;
 
 	applyExistingJotPrefsAll();
-
-	/*QString textEditContents = ui.textEdit->toHtml();
-	qDebug() << textEditContents;
-	textEditContents.replace("background-color:" + tempPrevColorJotCommentBg.name(), "background-color:" + colorJotCommentBg.name());
-	textEditContents.replace(" color:" + tempPrevColorJotCommentText.name(), " color:" + colorJotCommentText.name());
-	textEditContents.replace("background-color:" + tempPrevColorJotListTitleBg.name(), "background-color:" + colorJotListTitleBg.name());
-	textEditContents.replace(" color:" + tempPrevColorJotListTitleText.name(), " color:" + colorJotListTitleText.name());
-	textEditContents.replace("background-color:" + tempPrevColorJotMarkDoneBg.name(), "background-color:" + colorJotMarkDoneBg.name());
-	textEditContents.replace(" color:" + tempPrevColorJotMarkDoneText.name(), " color:" + colorJotMarkDoneText.name());
-	textEditContents.replace("background-color:" + tempPrevColorJotMarkScrappedBg.name(), "background-color:" + colorJotMarkScrappedBg.name());
-	textEditContents.replace(" color:" + tempPrevColorJotMarkScrappedText.name(), " color:" + colorJotMarkScrappedText.name());
-	qDebug() << textEditContents;
-	ui.textEdit->setHtml(textEditContents);*/
-
-	/*this->setStyleSheet(themePackages_themesList[themeCurrent].themeStylesheet);
-	textJotMarkDone = themePackages_themesList[themeCurrent].textJotMarkDone;
-	textJotMarkScrapped = themePackages_themesList[themeCurrent].textJotMarkScrapped;
-	colorJotCommentBg = themePackages_themesList[themeCurrent].colorJotCommentBg;
-	colorJotCommentText = themePackages_themesList[themeCurrent].colorJotCommentText;
-	colorJotListTitleBg = themePackages_themesList[themeCurrent].colorJotListTitleBg;
-	colorJotListTitleText = themePackages_themesList[themeCurrent].colorJotListTitleText;
-	colorJotMarkDoneBg = themePackages_themesList[themeCurrent].colorJotMarkDoneBg;
-	colorJotMarkDoneText = themePackages_themesList[themeCurrent].colorJotMarkDoneText;
-	colorJotMarkScrappedBg = themePackages_themesList[themeCurrent].colorJotMarkScrappedBg;
-	colorJotMarkScrappedText = themePackages_themesList[themeCurrent].colorJotMarkScrappedText;*/
 }
 
 void CuteLittleNotes::applyExistingJotPrefsAll()
@@ -962,64 +748,9 @@ std::string CuteLittleNotes::applyExistingJotPrefs(const std::string strBegin, c
 	return textEditContentsEdited;
 }
 
-//void CuteLittleNotes::prefSetThemeIcons(std::map<ThemeIconsKey, QString> &themeIconsMap)
-//{
-//	for (auto const& themeIcon : themeIconsMap)
-//	{
-//		switch (themeIcon.first)
-//		{
-//		case ThemeIconsKey::FILE_NEW:
-//			ui.actionNew->setIcon(QIcon(themeIcon.second));
-//			break;
-//		case ThemeIconsKey::FILE_OPEN:
-//			ui.actionOpen->setIcon(QIcon(themeIcon.second));
-//			break;
-//		case ThemeIconsKey::FILE_SAVE:
-//			ui.actionSave->setIcon(QIcon(themeIcon.second));
-//			break;
-//		case ThemeIconsKey::JOT_COMMENT:
-//			ui.actionComment->setIcon(QIcon(themeIcon.second));
-//			break;
-//		case ThemeIconsKey::JOT_LIST_TITLE:
-//			ui.actionListTitle->setIcon(QIcon(themeIcon.second));
-//			break;
-//		case ThemeIconsKey::JOT_MARK_DONE:
-//			ui.actionMarkDone->setIcon(QIcon(themeIcon.second));
-//			break;
-//		case ThemeIconsKey::JOT_MARK_SCRAPPED:
-//			ui.actionMarkScrapped->setIcon(QIcon(themeIcon.second));
-//			break;
-//		}
-//	}
-//	//ui.actionComment->setIcon(QIcon(":/CuteLittleNotes/Icon-Making/ThemeGray/toolbar-icon-comment-theme-gray.png"));
-//	//prefSetTheme(themeIconsMap_themeGray);
-//	//prefSetTheme(themeIconsMap_themeDefault);
-//	//ui.actionComment->setIcon(QIcon("C:/Users/Robert/source/repos/Cute Little Notes/Cute Little Notes/Icon-Making/icon-16.png"));
-//}
-
 void CuteLittleNotes::prefLoad()
 {
 	QSettings settings(appExecutablePath + "/preferences.ini", QSettings::IniFormat);
-
-	/*settings.beginGroup("Colors");
-	if (!settings.value("colorJotComment").isNull())
-		colorJotComment = settings.value("colorJotComment").value<QColor>();
-	if (!settings.value("colorJotListTitleBg").isNull())
-		colorJotListTitleBg = settings.value("colorJotListTitleBg").value<QColor>();
-	if (!settings.value("colorJotListTitleText").isNull())
-		colorJotListTitleText = settings.value("colorJotListTitleText").value<QColor>();
-	if (!settings.value("colorJotMarkDone").isNull())
-		colorJotMarkDone = settings.value("colorJotMarkDone").value<QColor>();
-	if (!settings.value("colorJotMarkScrapped").isNull())
-		colorJotMarkScrapped = settings.value("colorJotMarkScrapped").value<QColor>();
-	settings.endGroup();
-
-	settings.beginGroup("Text");
-	if (!settings.value("textJotMarkDone").toString().isEmpty())
-		textJotMarkDone = settings.value("textJotMarkDone").toString();
-	if (!settings.value("textJotMarkScrapped").toString().isEmpty())
-		textJotMarkScrapped = settings.value("textJotMarkScrapped").toString();
-	settings.endGroup();*/
 
 	settings.beginGroup("ThemeCurrent");
 	if (!settings.value("themeCurrentName").toString().isEmpty())
@@ -1045,19 +776,6 @@ void CuteLittleNotes::prefLoad()
 
 void CuteLittleNotes::prefSave()
 {
-	/*settings.beginGroup("Colors");
-	settings.setValue("colorJotComment", colorJotComment.name());
-	settings.setValue("colorJotListTitleBg", colorJotListTitleBg.name());
-	settings.setValue("colorJotListTitleText", colorJotListTitleText.name());
-	settings.setValue("colorJotMarkDone", colorJotMarkDone.name());
-	settings.setValue("colorJotMarkScrapped", colorJotMarkScrapped.name());
-	settings.endGroup();
-
-	settings.beginGroup("Text");
-	settings.setValue("textJotMarkDone", textJotMarkDone);
-	settings.setValue("textJotMarkScrapped", textJotMarkScrapped);
-	settings.endGroup();*/
-
 	{
 		QSettings settings(appExecutablePath + "/preferences.ini", QSettings::IniFormat);
 
@@ -1124,10 +842,6 @@ void CuteLittleNotes::moddingCheckForContent()
 
 	for (auto& theme_mod : themesList_mod)
 	{
-		//int expectedElementsCount = 0;
-		//const int expectedElementsTotal = 8; // 7 icons and 1 info file.
-		//QString themeUniqueNameToAdd = "";
-		//std::map<ThemeIconsKey, QString> new_ThemeIconsMap_mod;
 		themePackage themePackageInstance;
 
 		auto themesIt = std::experimental::filesystem::directory_iterator(theme_mod.toStdString());
@@ -1144,9 +858,6 @@ void CuteLittleNotes::moddingCheckForContent()
 				if (!settings.value("versionNumber").isNull())
 					themePackageInstance.versionNumber = settings.value("versionNumber").toDouble();
 				settings.endGroup();
-
-				/*if (!themeUniqueNameToAdd.isEmpty())
-					expectedElementsCount++;*/
 			}
 			else if (themeFile.path().filename().string().find("themeJot.ini") != std::string::npos)
 			{
@@ -1173,9 +884,6 @@ void CuteLittleNotes::moddingCheckForContent()
 				if (!settings.value("colorJotMarkScrappedText").isNull())
 					themePackageInstance.colorJotMarkScrappedText = settings.value("colorJotMarkScrappedText").value<QColor>();
 				settings.endGroup();
-
-				/*if (!themeUniqueNameToAdd.isEmpty())
-					expectedElementsCount++;*/
 			}
 			else if (themeFile.path().filename().string().find(".qss") != std::string::npos)
 			{
@@ -1216,59 +924,14 @@ void CuteLittleNotes::moddingCheckForContent()
 					themePackageInstance.themeStylesheet = QString::fromStdString(fileContents);
 				}
 			}
-			/*else if (themeFile.path().filename().string().find("toolbar-icon-new") != std::string::npos)
-			{
-				new_ThemeIconsMap_mod.insert(std::pair<ThemeIconsKey, QString>(ThemeIconsKey::FILE_NEW, QString::fromStdString(themeFile.path().string())));
-				expectedElementsCount++;
-			}
-			else if (themeFile.path().filename().string().find("toolbar-icon-open") != std::string::npos)
-			{
-				new_ThemeIconsMap_mod.insert(std::pair<ThemeIconsKey, QString>(ThemeIconsKey::FILE_OPEN, QString::fromStdString(themeFile.path().string())));
-				expectedElementsCount++;
-			}
-			else if (themeFile.path().filename().string().find("toolbar-icon-save") != std::string::npos)
-			{
-				new_ThemeIconsMap_mod.insert(std::pair<ThemeIconsKey, QString>(ThemeIconsKey::FILE_SAVE, QString::fromStdString(themeFile.path().string())));
-				expectedElementsCount++;
-			}
-			else if (themeFile.path().filename().string().find("toolbar-icon-comment") != std::string::npos)
-			{
-				new_ThemeIconsMap_mod.insert(std::pair<ThemeIconsKey, QString>(ThemeIconsKey::JOT_COMMENT, QString::fromStdString(themeFile.path().string())));
-				expectedElementsCount++;
-			}
-			else if (themeFile.path().filename().string().find("toolbar-icon-list-title") != std::string::npos)
-			{
-				new_ThemeIconsMap_mod.insert(std::pair<ThemeIconsKey, QString>(ThemeIconsKey::JOT_LIST_TITLE, QString::fromStdString(themeFile.path().string())));
-				expectedElementsCount++;
-			}
-			else if (themeFile.path().filename().string().find("toolbar-icon-mark-done") != std::string::npos)
-			{
-				new_ThemeIconsMap_mod.insert(std::pair<ThemeIconsKey, QString>(ThemeIconsKey::JOT_MARK_DONE, QString::fromStdString(themeFile.path().string())));
-				expectedElementsCount++;
-			}
-			else if (themeFile.path().filename().string().find("toolbar-icon-mark-scrapped") != std::string::npos)
-			{
-				new_ThemeIconsMap_mod.insert(std::pair<ThemeIconsKey, QString>(ThemeIconsKey::JOT_MARK_SCRAPPED, QString::fromStdString(themeFile.path().string())));
-				expectedElementsCount++;
-			}*/
 		}
 
-		//if (expectedElementsCount == expectedElementsTotal)
-		//{
-		//	//themesList.append(themeUniqueNameToAdd);
-		//	themeIconsMap_themesList.push_back(new_ThemeIconsMap_mod);
-		//}
 		if (!themePackageInstance.themeStylesheet.isEmpty())
 		{
 			themePackages_themesList.insert(std::pair<QString, themePackage>(themePackageInstance.themeUniqueName + " by " + themePackageInstance.creatorName, themePackageInstance));
-			//themePackages_themesList.push_back(themePackageInstance);
-			//themesList.append(themeUniqueNameToAdd);
-			//themeIconsMap_themesList.push_back(new_ThemeIconsMap_mod);
 		}
 		else
 		{
-			/*qDebug() << (expectedElementsTotal - expectedElementsCount) + " expected component(s) not found in " + theme_mod
-				+ "\nMake sure all required theme files are present in the format specified in the modding documentation.";*/
 			qDebug() << "No stylesheet found as part of mod in " + theme_mod + " Make sure all required theme files are present in the format specified in the modding documentation.";
 		}
 	}

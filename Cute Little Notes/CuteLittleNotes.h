@@ -55,55 +55,13 @@ private:
 	QString fileDirLastOpened = appExecutablePath;
 	QString fileDirLastSaved = appExecutablePath;
 
+	// ZOOM CODE -- NOT USED
 	//int zoomRange = 0; // The base font size range points. Zoom in or out moves this by +1 or -1. Stored for resetting zoom level.
+	// END ZOOM CODE
 
-	//enum class ThemeIconsKey { FILE_NEW, FILE_OPEN, FILE_SAVE, JOT_COMMENT, JOT_LIST_TITLE, JOT_MARK_DONE, JOT_MARK_SCRAPPED };
 
-	//// The string-based themes list is used in the set theme dialog to display choosable theme names to the user.
-	//QStringList themesList = 
-	//{
-	//	"Default | Pink",
-	//	"Gray",
-	//};
-
-	/*std::map<ThemeIconsKey, QString> themeIconsMap_themeDefault =
-	{
-		{ThemeIconsKey::FILE_NEW, ":/CuteLittleNotes/IconsBuiltIn/toolbar-icon-new.png"},
-		{ThemeIconsKey::FILE_OPEN, ":/CuteLittleNotes/IconsBuiltIn/toolbar-icon-open.png"},
-		{ThemeIconsKey::FILE_SAVE, ":/CuteLittleNotes/IconsBuiltIn/toolbar-icon-save.png"},
-		{ThemeIconsKey::JOT_COMMENT, ":/CuteLittleNotes/IconsBuiltIn/toolbar-icon-comment.png"},
-		{ThemeIconsKey::JOT_LIST_TITLE, ":/CuteLittleNotes/IconsBuiltIn/toolbar-icon-list-title.png"},
-		{ThemeIconsKey::JOT_MARK_DONE, ":/CuteLittleNotes/IconsBuiltIn/toolbar-icon-mark-done.png"},
-		{ThemeIconsKey::JOT_MARK_SCRAPPED, ":/CuteLittleNotes/IconsBuiltIn/toolbar-icon-mark-scrapped.png"},
-	};
-
-	std::map<ThemeIconsKey, QString> themeIconsMap_themeGray = 
-	{
-		{ThemeIconsKey::FILE_NEW, ":/CuteLittleNotes/IconsBuiltIn/ThemeGray/toolbar-icon-new-theme-gray.png"},
-		{ThemeIconsKey::FILE_OPEN, ":/CuteLittleNotes/IconsBuiltIn/ThemeGray/toolbar-icon-open-theme-gray.png"},
-		{ThemeIconsKey::FILE_SAVE, ":/CuteLittleNotes/IconsBuiltIn/ThemeGray/toolbar-icon-save-theme-gray.png"},
-		{ThemeIconsKey::JOT_COMMENT, ":/CuteLittleNotes/IconsBuiltIn/ThemeGray/toolbar-icon-comment-theme-gray.png"},
-		{ThemeIconsKey::JOT_LIST_TITLE, ":/CuteLittleNotes/IconsBuiltIn/ThemeGray/toolbar-icon-list-title-theme-gray.png"},
-		{ThemeIconsKey::JOT_MARK_DONE, ":/CuteLittleNotes/IconsBuiltIn/ThemeGray/toolbar-icon-mark-done-theme-gray.png"},
-		{ThemeIconsKey::JOT_MARK_SCRAPPED, ":/CuteLittleNotes/IconsBuiltIn/ThemeGray/toolbar-icon-mark-scrapped-theme-gray.png"},
-	};*/
-
-	//// This list should be ordered the same as the string-based themes list.
-	//// This enables passing as a function parameter the "icons map" we want to change to, based on shared index, 
-	//// rather than creating lots of if/else for strings from the string-based themes list.
-	//std::vector<std::map<ThemeIconsKey, QString>> themeIconsMap_themesList
-	//{ 
-	//	themeIconsMap_themeDefault, 
-	//	themeIconsMap_themeGray 
-	//};
-
-	// So rather than referencing by index, I should probably figure out a way to reference by an std::map key.
-	// For example, rather than storing the themes in a vector...
-	// store them in an std::map with QString and themePackage struct.
-	// The 'key' QString would be a string made up of theme name, creator name, and " by "...
-	// so that it's as unique as possible.
-	// Otherwise, you could run into a scenario where the saved theme preference loads the wrong theme...
-	// purely because the mods folder was read in a different order than the time when the preference was initially saved.
+	// Themes are stored and loaded from a map with expected unique name key (theme name + creator name).
+	// This is to ensure that the correct theme will be loaded, regardless of mod load order or similar theme name.
 
 	int themeCurrentIndex = 0; // The current theme by list index, based on the themes list.
 	const QString themeDefaultRevertName = "Default | Pink by Robert Jay Myers";
@@ -388,10 +346,8 @@ private slots:
 	void prefSetThemeOverride();
 	bool prefSetOverrideColor(QColor &color, const QString colorValName);
 	bool prefSetOverrideText(QString &text, const QString textValName);
-	//void prefSetText(QString &text);
 	void prefSetTheme();
 	void prefSetThemeLoadCurrentTheme();
-	//void prefSetThemeIcons(std::map<ThemeIconsKey, QString> &themeIconsMap);
 	void prefLoad();
 	void prefSave();
 	void moddingCheckForContent();
