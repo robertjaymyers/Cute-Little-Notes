@@ -207,7 +207,7 @@ public:
         textEdit = new QTextEdit(centralWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         QFont font;
-        font.setPointSize(10);
+        font.setPointSize(12);
         textEdit->setFont(font);
         textEdit->setStyleSheet(QStringLiteral(""));
         textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
