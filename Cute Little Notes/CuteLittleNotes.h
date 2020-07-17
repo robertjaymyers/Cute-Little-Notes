@@ -125,7 +125,7 @@ private:
 				"QMenu::item{  background-color: #F0F0F0;  margin: 2px;  padding: 2px 20px 2px 40px;  border: 1px solid transparent;}"
 				"QMenu::item:selected{  background-color: #FFB4FF;}"
 				"QMenu::item:selected{  color: #000000;}"
-				"QMenu::indicator:non-exclusive:checked{  image: url(:/CuteLittleNotes/IconsBuiltIn/menu-icon-checkbox-is-checked-elephant.png);}"
+				"QMenu::indicator:non-exclusive:checked{  image: url(:/CuteLittleNotes/IconsBuiltIn/menuIconCheckableIsChecked_themeDefaultPink.png);}"
 				"QMenu::indicator:non-exclusive:checked{  background-color: #FFB4FF;}"
 				"QStatusBar{  background-color: #FFFFFF;  color: #000000;}",
 				"Default - Pink",
@@ -169,7 +169,7 @@ private:
 				"QMenu::item{  background-color: #F0F0F0;  margin: 2px;  padding: 2px 20px 2px 40px;  border: 1px solid transparent;}"
 				"QMenu::item:selected{  background-color: #d2d2d2;}"
 				"QMenu::item:selected{  color: #000000;}"
-				"QMenu::indicator:non-exclusive:checked{  image: url(:/CuteLittleNotes/IconsBuiltIn/ThemeGray/menu-icon-checkbox-is-checked-elephant-theme-gray.png);}"
+				"QMenu::indicator:non-exclusive:checked{  image: url(:/CuteLittleNotes/IconsBuiltIn/ThemeGray/menuIconCheckableIsChecked_themeGray.png);}"
 				"QMenu::indicator:non-exclusive:checked{  background-color: #d2d2d2;}"
 				"QStatusBar{  background-color: #FFFFFF;  color: #000000;}",
 				"Gray",

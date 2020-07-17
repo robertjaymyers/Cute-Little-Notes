@@ -49,9 +49,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Icon-Making\cute-little-notes-app-icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="MainIcon.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
